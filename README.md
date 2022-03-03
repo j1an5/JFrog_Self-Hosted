@@ -127,12 +127,18 @@ Below are the products you have access to for each subscription.
         $ POSTGRES_PATH=\$(dirname \$(readlink -f \$(which psql))) \$JFROG_HOME/xray/app/third-party/postgresql/createPostgresUsers.sh
         ```
     2. Erlang - Packaged as RPM (or DEB) within the archive.
-        >\# rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/socat-\<version>.rpm<br>
-        \# rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/erlang-\<version>.rpm
+        ```
+        # rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/socat-\<version>.rpm<br>
+        # rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/erlang-\<version>.rpm
+        ```
     3. Db-Utils - Packaged as RPM (or DEB) within the archive.
-        >\# yum install -y $JFROG_HOME/xray/app/third-party/misc/*utils-<version>.rpm
-5. Customize the product configuration<br>
-    ![Artifactory Join Key]()
+        ```
+        # yum install -y $JFROG_HOME/xray/app/third-party/misc/*utils-<version>.rpm
+        ```
+5. Customize the product configuration
+    >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
+    ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
+
     ```
     # vim $JFROG_HOME/xray/var/etc/system.yaml
     configVersion: 1
