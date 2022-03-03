@@ -129,6 +129,24 @@ Below are the products you have access to for each subscription.
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url: "postgres://localhost:5432/xraydb?sslmode=disable"<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username: xray<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;password: xxxxxxxxxxxx
+5. Customize the product configuration
+    ```
+    # vim $JFROG_HOME/xray/var/etc/system.yaml
+    configVersion: 1
+      shared:
+        jfrogUrl: http://192.168.xx.xx:8082/
+        security:
+          joinKey: "xxxxxxxxxxxxxxxx"
+        node:
+          id: "xray1"
+          ip: "192.168.xx.xx"
+        database:
+          type: postgresql
+          driver: org.postgresql.Driver<br>
+          url: "postgres://localhost:5432/xraydb?sslmode=disable"<br>
+          username: xray<br>
+          password: xxxxxxxxxxxx
+    ```
 6. Start and manage the Xray service as the user who extracted the tar.<br>
     As a process
     | Daemon Process |
