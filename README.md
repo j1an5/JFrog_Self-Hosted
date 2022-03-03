@@ -44,6 +44,9 @@ Below are the products you have access to for each subscription.
 | Enterprise X | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Xray: Security and Compliance Scanning |
 | Enterprise+ | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Insight: Manage DevOps Insights <br>JFrog Xray: Security and Compliance Scanning <br>JFrog Pipelines: CI/CD pipeline orchestration  <br>JFrog Distribution: Global software distribution |
 
+## Download
+### [Previous Releases](https://jfrog.com/download-legacy/)
+
 ## Single Node Installation
 ### [Linux Archive Installation](./Single%20Node%20Installation/Linux%20Archive%20Installation/README.md)
 ### [RPM Installation]()

@@ -10,7 +10,6 @@
 2. Create a JFrog Home directory and move the downloaded installer archive into that directory, for example:
     ```
     # mkdir -p $JFROG_HOME
-    # wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/7.33.9/jfrog-artifactory-pro-7.33.9-linux.tar.gz
     # mv jfrog-artifactory-pro-<version>-linux.tar.gz $JFROG_HOME/
     # cd $JFROG_HOME/
     ```
@@ -48,7 +47,6 @@
 2. Create a JFrog Home directory and move the downloaded installer archive into that directory, for example:
     ```
     # mkdir -p $JFROG_HOME
-    # wget https://releases.jfrog.io/artifactory/jfrog-xray/xray-linux/3.43.1/jfrog-xray-3.43.1-linux.tar.gz
     # mv jfrog-xray-<version>-linux.tar.gz $JFROG_HOME/
     # cd $JFROG_HOME/
     ```
@@ -65,18 +63,17 @@
         # /usr/pgsql-12/bin/postgresql-12-setup initdb
         # systemctl enable postgresql-12 && systemctl start postgresql-12
         # vim /var/lib/pgsql/12/data/pg_hba.conf
-            # "local" is for Unix domain socket connections only
-            local   all             all                                     peer
-            # IPv4 local connections:
-            host    all             all             127.0.0.1/32            trust
-            # IPv6 local connections:
-            host    all             all             ::1/128                 trust
-            # Allow replication connections from localhost, by a user with the
-            # replication privilege.
-            local   replication     all                                     peer
-            host    replication     all             127.0.0.1/32            md5
-            host    replication     all             ::1/128                 md5
-        # systemctl restart postgresql-12
+        "local" is for Unix domain socket connections only
+        local   all             all                                     peer
+        # IPv4 local connections:
+        host    all             all             127.0.0.1/32            trust
+        # IPv6 local connections:
+        host    all             all             ::1/128                 trust
+        # Allow replication connections from localhost, by a user with the
+        # replication privilege.
+        local   replication     all                                     peer
+        host    replication     all             127.0.0.1/32            md5
+        host    replication     all             ::1/128                 md5
         # su - postgres //切换用户并执行创建数据库脚本
         $ POSTGRES_PATH=\$(dirname \$(readlink -f \$(which psql))) \$JFROG_HOME/xray/app/third-party/postgresql/createPostgresUsers.sh
         ```
