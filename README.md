@@ -128,7 +128,7 @@ Below are the products you have access to for each subscription.
         ```
     2. Erlang - Packaged as RPM (or DEB) within the archive.
         ```
-        # rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/socat-\<version>.rpm<br>
+        # rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/socat-\<version>.rpm
         # rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/erlang-\<version>.rpm
         ```
     3. Db-Utils - Packaged as RPM (or DEB) within the archive.
@@ -151,7 +151,7 @@ Below are the products you have access to for each subscription.
           ip: "192.168.xx.xx"
         database:
           type: postgresql
-          driver: org.postgresql.Driver<br>
+          driver: org.postgresql.Driver
           url: "postgres://localhost:5432/xraydb?sslmode=disable"
           username: xray
           password: xxxxxxxxxxxx
