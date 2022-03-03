@@ -11,7 +11,6 @@
 2. Run the script to setup folders with required ownership. This is an interactive script.
     ```
     # ./config.sh
-
     ```
 3. Customize the product configuration (optional) including database, Java Opts, and filestore.
     ```
@@ -45,29 +44,20 @@ Run this command from the extracted folder.
     # cd jfrog-xray-<version>-compose
     ```
 2. Run the installer script.
+    >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
+    ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
     ```
     # ./config.sh
     ```
 3. Customize the product configuration
-    >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
-    ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
-
     ```
     # vim $JFROG_HOME/xray/var/etc/system.yaml
     configVersion: 1
-      shared:
-        jfrogUrl: http://192.168.xx.xx:8082/
-        security:
-          joinKey: "xxxxxxxxxxxxxxxx"
+        ......
         node:
           id: "xray1"
           ip: "192.168.xx.xx"
-        database:
-          type: postgresql
-          driver: org.postgresql.Driver
-          url: "postgres://localhost:5432/xraydb?sslmode=disable"
-          username: xray
-          password: xxxxxxxxxxxx
+        ....
     ```
 4. Start and manage the Xray service.
     ```
