@@ -2,12 +2,18 @@
 ## RPM Installation
 
 ### Artifactory
-1. Install Artifactory as a service on Red Hat compatible Linux distributions, as a root user.
+1. 安装Artifactory,本文使用的版本是7.33.9(Install Artifactory as a service on Red Hat compatible Linux distributions, as a root user）
     ```
-    # wget https://releases.jfrog.io/artifactory/artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-7.33.9.rpm
-    # yum install -y jfrog-artifactory-pro-<version>.rpm
+    wget https://releases.jfrog.io/artifactory/artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-7.33.9.rpm
+    yum install -y jfrog-artifactory-pro-7.33.9.rpm
     ```
-2. Customize the product configuration (optional) including database, Java Opts, and filestore.
+    或安装最新版
+    ```
+    wget https://releases.jfrog.io/artifactory/artifactory-pro-rpms/artifactory-pro-rpms.repo -O /etc/yum.repos.d/jfrog-artifactory-pro-rpms.repo;
+    sudo yum update 
+    sudo yum install jfrog-artifactory-pro
+    ```
+2. 修改配置文件(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```
     # vim $JFROG_HOME/artifactory/var/etc/system.yaml
     shared:
@@ -17,15 +23,21 @@
         ip: "192.168.xx.xx”
     ....
     ```
-3. Manage Artifactory using the following commands.
+3. 启动Artifactory(Manage Artifactory using the following commands.)
     ```
-    # systemctl start|stop artifactory
+    # systemctl start artifactory
     ```
-4. Check Artifactory Log.
+4. 检查日志(Check Artifactory Log.)
     ```
     # tail -f $JFROG_HOME/artifactory/var/log/console.log
+    ....
+    ###############################################################
+    ###   All services started successfully in xx.xxx seconds   ###
+    ###############################################################
+    ....
     ```
-5. Access Artifactory from your browser at: http://SERVER_HOSTNAME:8082/ui/. For example, on your local machine: http://localhost:8082/ui/.
+5. 访问Artifactory UI 9Access Artifactory from your browser)
+    >http://SERVER_HOSTNAME:8082/
 
 ### Xray
 1. 设置JFrog主目录(Set the JFrog Home environment variable)
@@ -38,12 +50,12 @@
     mkdir -p $JFROG_HOME && cd $JFROG_HOME/
     wget https://releases.jfrog.io/artifactory/jfrog-xray/xray-rpm/3.43.1/jfrog-xray-3.43.1-rpm.tar.gz
     ```
-3. Extract the contents of the compressed archive, and go to the extracted folder.
+3. 提取压缩包,进入目录(Extract the contents of the compressed archive, and go to the extracted folder.)
     ```
     # tar -xvf jfrog-xray-3.43.1-rpm.tar.gz
     # cd jfrog-xray-3.43.1-rpm
     ```
-4. Prerequisites
+4. 前置条件(Prerequisites)
     1. PostgreSQL [安装](https://www.jfrog.com/confluence/display/JFROG/Installing+Xray#InstallingXray-InstallingPostgreSQL) & configure
         ```
         mkdir -p /var/opt/postgres/data
@@ -126,6 +138,11 @@
 8. 检查日志(Check Xray Log.)
     ```
     # tail -f $JFROG_HOME/xray/var/log/console.log
+    ....
+    ###############################################################
+    ###   All services started successfully in xx.xxx seconds   ###
+    ###############################################################
+    ....
     ```
 9. 通过Artifactory UI访问Xray(Access Xray from your browser)
     >http://\<jfrogUrl>/
