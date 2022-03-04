@@ -131,7 +131,7 @@
     ```termminal
     # tail -n100 -f $JFROG_HOME/xray/var/log/console.log
     ###############################################################
-    ###   All services started successfully in 25.765 seconds   ###
+    ###   All services started successfully in xx.xxx seconds   ###
     ###############################################################
     ```
 8. 访问Xray(Access Xray from your browser)
