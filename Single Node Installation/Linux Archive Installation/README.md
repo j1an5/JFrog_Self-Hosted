@@ -134,4 +134,4 @@
     ###############################################################
     ```
 8. 访问Xray(Access Xray from your browser)
-    >http://<jfrogUrl>
+    >http://jfrogUrl
