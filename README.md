@@ -57,13 +57,13 @@ yum -y install ntpdate net-tools
 ```
 >设置定时任务:同步服务器时间
 ```shell
-crontab -e
-*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com
+echo "*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
 ```
 >关闭防火墙
 ```shell
 systemctl disable firewalld && systemctl stop firewalld
 ```
+![测试环境准备]()
 
 ## Single Node Installation
 >Default credential for Artifactory:<br>
