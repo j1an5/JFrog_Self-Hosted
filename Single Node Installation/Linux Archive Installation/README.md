@@ -2,25 +2,24 @@
 ## Linux Archive Installation
 
 ### Artifactory
-1. Set the JFrog Home environment variable
+1. 设置环境变量,JFrog主目录 JFORG_HOME(Set the JFrog Home environment variable)
+    ```shell
+    echo "export JFROG_HOME=/opt/jfrog" >> /etc/profile
+    source /etc/profile
     ```
-    # echo "export JFROG_HOME=/opt/jfrog" >> /etc/profile
-    # source /etc/profile
+2. 创建主目录,进入主目录并下载需要的版本包，本文使用的是7.33.9版本(Create a JFrog Home directory and move the downloaded installer archive into that directory, for example:)
     ```
-2. Create a JFrog Home directory and move the downloaded installer archive into that directory, for example:
+    mkdir -p $JFROG_HOME && cd $JFROG_HOME/
+    wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/7.33.9/jfrog-artifactory-pro-7.33.9-linux.tar.gz
     ```
-    # mkdir -p $JFROG_HOME
-    # wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/7.33.9/jfrog-artifactory-pro-7.33.9-linux.tar.gz
-    # mv jfrog-artifactory-pro-<version>-linux.tar.gz $JFROG_HOME/
-    # cd $JFROG_HOME/
+3. 提取压缩包并重命名(Extract the contents of the compressed archive and move it into the artifactory directory.)
     ```
-3. Extract the contents of the compressed archive and move it into the artifactory directory.
+    tar -xvf jfrog-artifactory-pro-<version>-linux.tar.gz
+    mv artifactory-pro-<version> artifactory
     ```
-    # tar -xvf jfrog-artifactory-pro-<version>-linux.tar.gz
-    # mv artifactory-pro-<version> artifactory
-    ```
-4. Customize the product configuration (optional) including database, Java Opts, and filestore.
-    ```
+4. 修改配置文件-必要(Customize the product configuration (optional) including database, Java Opts, and filestore.)
+    ```terminal
+    # cp $JFROG_HOME/artifactory/var/etc/{system.full-template.yaml,system.yaml}
     # vim $JFROG_HOME/artifactory/var/etc/system.yaml
     shared:
     ....
@@ -29,16 +28,21 @@
         ip: "192.168.xx.xx”
     ....
     ```
-5. Run Artifactory as a foreground, background process, or as a service.
+5. 运行Artifactory(Run Artifactory)
     | Daemon Process |
     | ---- |
     | $JFROG_HOME/artifactory/app/bin/artifactoryctl start |
-6. Check Artifactory Log.
+6. 检查日志(Check Artifactory Log.)
     ```
     # tail -f $JFROG_HOME/artifactory/var/log/console.log
+    ....
+    ###############################################################
+    ###   All services started successfully in xx.xxx seconds   ###
+    ###############################################################
+    ....
     ```
-7. Access Artifactory from your browser at: http://SERVER_HOSTNAME:8082/ui/. For example, on your local machine: http://localhost:8082/ui/.
-
+7. 访问Artifactory(Access Artifactory from your browser.)
+    > http://SERVER_HOSTNAME:8082
 ### Xray
 1. Set the JFrog Home environment variable
     ```
