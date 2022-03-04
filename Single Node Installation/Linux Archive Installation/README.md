@@ -90,6 +90,7 @@
         ....main] - Waiting for Postgres to get ready using the commands: "/usr/pgsql-12/bin/psql --host=localhost --port=5432 --version" & "/usr/pgsql-12/bin/psql --host=localhost --port=5432 -l"
         ....main] - Postgres is ready. Executing commands
         ....main] - Postgres setup is now complete
+        $ exit
         ```
     4. 安装rabbitmq依赖 - 压缩包内有提供,版本可能不同
         ```shell
