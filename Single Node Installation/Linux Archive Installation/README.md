@@ -86,16 +86,19 @@
     3. 创建Xray数据库
         ```
         # su - postgres //切换用户并执行创建数据库脚本
-        $ POSTGRES_PATH=\$(dirname \$(readlink -f \$(which psql))) \$JFROG_HOME/xray/app/third-party/postgresql/createPostgresUsers.sh
+        $ POSTGRES_PATH=$(dirname $(readlink -f $(which psql))) $JFROG_HOME/xray/app/third-party/postgresql/createPostgresUsers.sh
+        ....main] - Waiting for Postgres to get ready using the commands: "/usr/pgsql-12/bin/psql --host=localhost --port=5432 --version" & "/usr/pgsql-12/bin/psql --host=localhost --port=5432 -l"
+        ....main] - Postgres is ready. Executing commands
+        ....main] - Postgres setup is now complete
         ```
-    4. Erlang - 压缩包内有提供,版本可能不同
+    4. 安装rabbitmq依赖 - 压缩包内有提供,版本可能不同
         ```shell
-        rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/socat-<version>.rpm
-        rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/erlang-<version>.rpm
+        rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/socat-1.7.3.2-2.el7.x86_64.rpm
+        rpm -ivh --replacepkgs $JFROG_HOME/xray/app/third-party/rabbitmq/erlang-23.2.3-1.el7.x86_64.rpm
         ```
     5. Db-Utils - 压缩包内有提供,版本可能不同
         ```shell
-        yum install -y $JFROG_HOME/xray/app/third-party/misc/*utils-<version>.rpm
+        yum install -y $JFROG_HOME/xray/app/third-party/misc/libdb-utils-5.3.21-25.el7.x86_64.rpm
         ```
 5. 修改配置文件(Customize the product configuration)
     >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
@@ -119,13 +122,16 @@
           username: xray
           password: xxxxxxxxxxxx
     ```
-6. Start and manage the Xray service as the user who extracted the tar.(As a process)
+6. 启动Xray(Start and manage the Xray service as the user who extracted the tar)
     | Daemon Process |
     | ---- |
     | $JFROG_HOME/xray/app/bin/xray.sh start |
-7. Check Xray Log.
-    ```shell
-    tail -f $JFROG_HOME/xray/var/log/console.log
+7. 检查启动日志(Check Xray Log.)
+    ```termminal
+    # tail -n100 -f $JFROG_HOME/xray/var/log/console.log
+    ###############################################################
+    ###   All services started successfully in 25.765 seconds   ###
+    ###############################################################
     ```
 8. 访问Xray(Access Xray from your browser)
     >http://<jfrogUrl>
