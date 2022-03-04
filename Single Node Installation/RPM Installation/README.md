@@ -15,7 +15,7 @@
     ```
 2. 修改配置文件(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```
-    # vim $JFROG_HOME/artifactory/var/etc/system.yaml
+    # vim /opt/jfrog/artifactory/var/etc/system.yaml
     shared:
     ....
       node:
@@ -25,11 +25,11 @@
     ```
 3. 启动Artifactory(Manage Artifactory using the following commands.)
     ```
-    # systemctl start artifactory
+    systemctl start artifactory
     ```
 4. 检查日志(Check Artifactory Log.)
     ```
-    # tail -f $JFROG_HOME/artifactory/var/log/console.log
+    # tail -f /opt/jfrog/artifactory/var/log/console.log
     ....
     ###############################################################
     ###   All services started successfully in xx.xxx seconds   ###
@@ -52,14 +52,14 @@
     ```
 3. 提取压缩包,进入目录(Extract the contents of the compressed archive, and go to the extracted folder.)
     ```
-    # tar -xvf jfrog-xray-3.43.1-rpm.tar.gz
-    # cd jfrog-xray-3.43.1-rpm
+    tar -xvf jfrog-xray-3.43.1-rpm.tar.gz
+    cd jfrog-xray-3.43.1-rpm
     ```
 4. 前置条件(Prerequisites)
     1. PostgreSQL [安装](https://www.jfrog.com/confluence/display/JFROG/Installing+Xray#InstallingXray-InstallingPostgreSQL) & configure
         ```
         mkdir -p /var/opt/postgres/data
-        rpm -ivh --replacepkgs ./third-party/postgresql/libicu-50.2-4.el7_7.x86_64.rpm (only AWS instance)
+        rpm -ivh --replacepkgs ./third-party/postgresql/libicu-50.2-4.el7_7.x86_64.rpm
         rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-libs-13.4-1PGDG.rhel7.x86_64.rpm
         rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-13.4-1PGDG.rhel7.x86_64.rpm
         rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-server-13.4-1PGDG.rhel7.x86_64.rpm
@@ -99,16 +99,16 @@
         ```
     4. 安装Rabbitmq依赖(Install RabbitMQ dependencies.)
         ```
-        # rpm -ivh --replacepkgs ./third-party/rabbitmq/socat-1.7.3.2-2.el7.x86_64.rpm
-        # rpm -ivh --replacepkgs ./third-party/rabbitmq/erlang-23.2.3-1.el7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/rabbitmq/socat-1.7.3.2-2.el7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/rabbitmq/erlang-23.2.3-1.el7.x86_64.rpm
         ```
     5. 安装db-util(You can use the bundled db-utils RPM found under /third-party/misc/.)
         ```
-        # yum install -y ./third-party/misc/libdb-utils-5.3.21-25.el7.x86_64.rpm
+        yum install -y ./third-party/misc/libdb-utils-5.3.21-25.el7.x86_64.rpm
         ```
 5. 安装Xray(Install Xray. You must run as a root user)
     ```
-    # rpm -Uvh --replacepkgs ./xray/xray.rpm
+    rpm -Uvh --replacepkgs ./xray/xray.rpm
     ```
 6. 修改配置文件(Customize the product configuration)
     >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
@@ -133,7 +133,7 @@
     ```
 7. 启动xray(Start and manage the Xray service.)
     ```
-    # systemctl start|stop xray.service
+    systemctl start xray
     ```
 8. 检查日志(Check Xray Log.)
     ```
