@@ -47,6 +47,19 @@ Below are the products you have access to for each subscription.
 ## Download
 ### [Previous Releases](https://jfrog.com/download-legacy/)
 
+## 演示环境准备
+Cenotos7.x虚拟机  2台 [(VirtualBox提供:4c8g200G最小化安装)](https://github.com/alexwang66/Guestbook-microservices-k8s/blob/master/Virtualbox安装虚拟机配置双网卡.md)
+```
+服务器时区和时间配置
+# ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# yum -y install ntpdate net-tools
+# /usr/sbin/ntpdate ntp1.aliyun.com
+设置定时任务:同步服务器时间
+# crontab -e
+*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com
+关闭防火墙
+# systemctl disable firewalld && systemctl stop firewalld
+```
 
 ## Single Node Installation
 >Default credential for Artifactory:<br>

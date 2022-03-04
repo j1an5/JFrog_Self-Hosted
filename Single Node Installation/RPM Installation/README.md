@@ -6,7 +6,6 @@
     ```
     # wget https://releases.jfrog.io/artifactory/artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-7.33.9.rpm
     # yum install -y jfrog-artifactory-pro-<version>.rpm
-
     ```
 2. Customize the product configuration (optional) including database, Java Opts, and filestore.
     ```
