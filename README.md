@@ -63,7 +63,7 @@ echo "*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
 ```shell
 systemctl disable firewalld && systemctl stop firewalld
 ```
-![测试环境准备]()
+![测试环境准备](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87.png)
 
 ## Single Node Installation
 >Default credential for Artifactory:<br>
