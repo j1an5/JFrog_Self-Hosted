@@ -47,7 +47,11 @@ Below are the products you have access to for each subscription.
 ## Download
 ### [Previous Releases](https://jfrog.com/download-legacy/)
 
+
 ## Single Node Installation
+>Default credential for Artifactory:<br>
+user: admin<br>
+password: password
 ### [Linux Archive Installation](./Single%20Node%20Installation/Linux%20Archive%20Installation/README.md)
 ### [RPM Installation]()
 ### [Docker Compose Installation]()
