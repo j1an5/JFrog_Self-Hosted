@@ -57,7 +57,7 @@
 3. 提取压缩包并重命名(Extract the contents of the compressed archive and move it into xray directory.)
     ```shell
     tar -xvf jfrog-xray-3.43.1-linux.tar.gz
-    mv jfrog-xray-<3.43.1-linux xray
+    mv jfrog-xray-3.43.1-linux xray
     ```
 4. 前置条件(Prerequisites)
     1. PostgreSQL [安装](https://www.postgresql.org/download/linux/redhat/)
@@ -66,6 +66,7 @@
         yum install -y postgresql12-server
         /usr/pgsql-12/bin/postgresql-12-setup initdb
         systemctl enable postgresql-12 && systemctl start postgresql-12
+        ```
     2. PostgreSQL 信任设置
         ```terminal
         # vim /var/lib/pgsql/12/data/pg_hba.conf
