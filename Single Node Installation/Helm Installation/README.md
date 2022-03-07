@@ -95,9 +95,34 @@
     ```
 6. 安装Longhorn (作为K8s默认存储)
     ```
-    yum install iscsi-initiator-utils -y
-    kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.2.3/deploy/longhorn.yaml
-    kubectl patch storageclass longhorn -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}’
+    yum install iscsi-initiator-utils wget -y
+    wget https://raw.githubusercontent.com/longhorn/longhorn/v1.2.3/deploy/longhorn.yaml
+    kubectl apply -f ./longhorn.yaml
+    kubectl patch storageclass longhorn -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+    ```
+    ```
+    # kubectl get pods \
+    --namespace longhorn-system 
+    NAME                                        READY   STATUS    RESTARTS   AGE
+    csi-attacher-5f46994f7-5bhq2                1/1     Running   0          2m39s
+    csi-attacher-5f46994f7-fkdgd                1/1     Running   0          2m39s
+    csi-attacher-5f46994f7-vcnrl                1/1     Running   0          2m39s
+    csi-provisioner-6ccbfbf86f-bwbsh            1/1     Running   0          2m39s
+    csi-provisioner-6ccbfbf86f-hpffg            1/1     Running   0          2m39s
+    csi-provisioner-6ccbfbf86f-lhksv            1/1     Running   0          2m39s
+    csi-resizer-6dd8bd4c97-5kg57                1/1     Running   0          2m39s
+    csi-resizer-6dd8bd4c97-s8wlj                1/1     Running   0          2m39s
+    csi-resizer-6dd8bd4c97-zndld                1/1     Running   0          2m39s
+    csi-snapshotter-86f65d8bc-8xwcg             1/1     Running   0          2m38s
+    csi-snapshotter-86f65d8bc-9vqdv             1/1     Running   0          2m38s
+    csi-snapshotter-86f65d8bc-xzfdm             1/1     Running   0          2m38s
+    engine-image-ei-fa2dfbf0-hdjtq              1/1     Running   0          2m48s
+    instance-manager-e-a39aaa4c                 1/1     Running   0          2m48s
+    instance-manager-r-d695cbcb                 1/1     Running   0          2m47s
+    longhorn-csi-plugin-5qqpw                   2/2     Running   0          2m38s
+    longhorn-driver-deployer-784546d78d-pgx9c   1/1     Running   0          3m4s
+    longhorn-manager-fs6wj                      1/1     Running   0          3m5s
+    longhorn-ui-9fdb94f9-5nlrq                  1/1     Running   0          3m4s
     ```
 
 ### Artifactory
