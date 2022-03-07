@@ -9,6 +9,10 @@ yum-config-manager   --add-repo    https://download.docker.com/linux/centos/dock
 yum install docker-ce  -y
 systemctl start docker && systemctl enable docker 
 ```
+```
+# docker version
+Docker version 20.10.12, build e91ed57
+```
 #### Docker-compose [安装](https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/)
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
@@ -78,7 +82,7 @@ docker-compose version 1.29.2, build 5becea4c
     
 3. 修改配置(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```
-    # vim $JFROG_HOME/artifactory/var/etc/system.yaml
+    # vim /opt/jfrog/artifactory/var/etc/system.yaml
     shared:
     ....
       node:
@@ -86,22 +90,20 @@ docker-compose version 1.29.2, build 5becea4c
         ip: "192.168.xx.xx”
     ....
     ```
-4. 启停Artifactory及PostgreSQL(Manage Artifactory using native Docker Compose commands, docker-compose -p rt <action> command.<br>
+4. 启动、停止Artifactory(Manage Artifactory using native Docker Compose commands, docker-compose -p rt <action> command.<br>
 Run this command from the extracted folder.)<br>
-    >启动
     ```
-    docker-compose -p rt-postgres -f docker-compose-postgres.yaml up -d
     docker-compose -p rt up -d
-    ```
-    >停止
-    ```
     docker-compose -p rt down
-    docker-compose -p rt-postgres -f docker-compose-postgres.yaml down
-
     ```
 5. Check Artifactory Log.
     ```
-    docker-compose -p rt logs
+    # docker-compose -p rt logs -f
+    ....
+    artifactory    | ###############################################################
+    artifactory    | ###   All services started successfully in xx.xxx seconds   ###
+    artifactory    | ###############################################################
+    ...
     ```
 6. 访问Artifactory(Access Artifactory from your browser.)
     > http://SERVER_HOSTNAME:8082
