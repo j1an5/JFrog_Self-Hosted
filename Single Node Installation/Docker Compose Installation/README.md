@@ -28,10 +28,6 @@
     # vi /etc/security/limits.conf
     root hard nofile 100000
     root soft nofile 100000
-    xray hard nofile 100000
-    xray soft nofile 100000
-    postgres hard nofile 100000
-    postgres soft nofile 100000
     # reboot
     ```
 
@@ -134,10 +130,81 @@ Run this command from the extracted folder.)<br>
     ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
     ```
     # ./config.sh
+
+
+    Beginning JFrog Xray setup
+
+
+    Validating System requirements
+
+I   f you are not performing an upgrade, you can ignore the following question and press y
+    Have you disconnected Artifactory Xray pairings, except one prior to performing this upgrade (Refer http://service.jfrog.org/wiki/Xray+and+Artifactory+One+to+One+Pairing for more details) ? [y/N]: y
+
+    Installation Directory (Default: /root/.jfrog/xray): /opt/jfrog/xray
+
+    Running system diagnostics checks, logs can be found at [/root/jfrog-xray-3.43.1-compose/systemDiagnostics.log]
+
+    Triggering migration script. This will migrate if needed and may take some time.
+
+    Migration logs will be available at [/root/jfrog-xray-3.43.1-compose/bin/migration.log]. The file will be archived at [/opt/jfrog/xray/var/log] after installation
+
+    The JFrog URL allows Xray to connect to a JFrog Platform Instance.
+    (You can copy the JFrog URL from Admin > Security > Settings)
+    JFrog URL: http://192.168.56.110:8082/
+    [WARN ] Error while initializing File resolver : Config file does not exists : var/etc/system.yaml
+    Attempt to connect JFrogURL succeeded
+
+    The Join key is the secret key used to establish trust between services in the JFrog Platform.
+    (You can copy the Join Key from Admin > Security > Settings)
+    Join Key: 
+
+
+    For IPv6 address, enclose value within square brackets as follows : [<ipv6_address>]
+    Please specify the IP address of this machine (Default: fe80::825:e011:a715:9470%enp0s8): 192.168.56.120
+
+    Are you adding an additional node to an existing product cluster? [y/N]: n
+
+    The installer can install a PostgreSQL database, or you can connect to an existing compatible PostgreSQL database
+    (https://service.jfrog.org/installer/System+Requirements#SystemRequirements-RequirementsMatrix)
+    If you are upgrading from an existing installation, select N if you have externalized PostgreSQL, select Y if not.
+    Do you want to install PostgreSQL? [Y/n]: y
+
+    To setup PostgreSQL, please enter a password
+    database password: 
+
+    confirm database password: 
+
+    Creating third party directories (if necessary)
+
+    Attempting to seed PostgreSQL. This may take some time.
+
+    Successfully seeded PostgreSQL
+
+    Docker setup complete
+
+    Installation directory: [/opt/jfrog/xray] contains data and configurations.
+
+    Use docker-compose commands to start the application. Once the application has started, it can be accessed at [http://192.168.56.110:8082/]
+
+    Examples:
+    cd /root/jfrog-xray-3.43.1-compose
+
+
+    Rabbitmq is a dependent service which needs to be started once after install. This needs to be running before start of xray services.
+
+    start rabbitmq:      docker-compose -p xray-rabbitmq -f docker-compose-rabbitmq.yaml up -d
+    start postgresql:    docker-compose -p xray-postgres -f docker-compose-postgres.yaml up -d
+    stop  postgresql:    docker-compose -p xray-postgres -f docker-compose-postgres.yaml down
+    start:               docker-compose -p xray up -d
+    stop:                docker-compose -p xray down
+
+    NOTE: The compose file uses several environment variables from the .env file. Remember to run from within the [/root/jfrog-xray-3.43.1-compose] folder
+
+    Done
     ```
 3. 修改配置(Customize the product configuration)
     ```
-    # vim /opt/jfrog/xray/var/etc/system.yaml
+    # vi /opt/jfrog/xray/var/etc/system.yaml
     configVersion: 1
         ......
         node:
