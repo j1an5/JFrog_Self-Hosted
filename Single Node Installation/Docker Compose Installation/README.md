@@ -19,16 +19,63 @@ docker-compose version 1.29.2, build 5becea4c
 ```
 
 ### Artifactory
-1. 下载并解压,进入解压后的目录(Extract the contents of the compressed archive)
+1. 下载并解压,进入解压后的目录,本文使用的版本是7.33.9(Extract the contents of the compressed archive)
     ```
     wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/docker/jfrog-artifactory-pro/7.33.9/jfrog-artifactory-pro-7.33.9-compose.tar.gz
-    tar -xvf jfrog-artifactory-pro-<version>-compose.tar.gz
-    cd jfrog-artifactory-pro-<version>
+    tar -xvf jfrog-artifactory-pro-7.33.9-compose.tar.gz
+    cd artifactory-pro-7.33.9
     ```
 2. 执行交互脚本,自动生成配置文件(Run the script to setup folders with required ownership. This is an interactive script.)
-    ```
-    ./config.sh
-    ```
+    >\# ./config.sh<br>
+    <br>
+    Beginning JFrog Artifactory setupM<br>
+    <br>
+    Validating System requirements<br>
+    <br>
+    Installation Directory (Default: /opt/jfrog/artifactory): <font color=#FF0000 >/opt/jfrog/artifactory</font><br>
+    <br>
+    Running system diagnostics checks, logs can be found at [/root/artifactory-pro-7.33.9/systemDiagnostics.log]<br>
+    <br>
+    Triggering migration script. This will migrate if needed and may take some time.<br>
+    <br>
+    Migration logs will be available at [/root/artifactory-pro-7.33.9/bin/migration.log]. The file will be archived at [/opt/jfrog/artifactory/var/log] after installation<br>
+    <br>
+    For IPv6 address, enclose value within square brackets as follows : [<ipv6_address>]<br>
+    Please specify the IP address of this machine (Default: fe80::825:e011:a715:9470%enp0s8): <font color=#0000FF >192.168.56.110</font><br>
+    <br>
+    Are you adding an additional node to an existing product cluster? [y/N]: n<br>
+    <br>
+    The installer can install a PostgreSQL database, or you can connect to an existing compatible PostgreSQL database<br>
+    (https://service.jfrog.org/installer/System+Requirements#SystemRequirements-RequirementsMatrix)<br>
+    If you are upgrading from an existing installation, select N if you have externalized PostgreSQL, select Y if not.<br>
+    Do you want to install PostgreSQL? [Y/n]: n<br>
+    <br>
+    Provide the type of your external database that you want to connect to.<br>
+    Note : If you choose derby, it will be considered as an internal database and no further details will be asked<br>
+    Enter database type, supported values [ postgresql mssql mariadb mysql oracle derby ]: derby<br>
+    <br>
+    Database type set as [derby]. Skipping database related prompts<br>
+    <br>
+    Creating third party directories (if necessary)<br>
+    <br>
+    Docker setup complete<br>
+    <br>
+    Installation directory: [/opt/jfrog/artifactory] contains data and configurations.<br>
+    <br>
+    Use docker-compose commands to start the application. Once the application has started, it can be accessed at [http://fe80::825:e011:a715:9470%enp0s8:8082]<br>
+    <br>
+    Examples:<br>
+    cd /root/artifactory-pro-7.33.9<br>
+    <br>
+    <br>
+    <br>
+    start:               docker-compose -p rt up -d<br>
+    stop:                docker-compose -p rt down<br>
+    <br>
+    NOTE: The compose file uses several environment variables from the .env file. Remember to run from within the [/root/artifactory-pro-7.33.9] folder<br>
+    <br>
+    Done<br>
+    
 3. 修改配置(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```
     # vim $JFROG_HOME/artifactory/var/etc/system.yaml
