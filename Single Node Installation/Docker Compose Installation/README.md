@@ -25,7 +25,8 @@ docker-compose version 1.29.2, build 5becea4c
     tar -xvf jfrog-artifactory-pro-7.33.9-compose.tar.gz
     cd artifactory-pro-7.33.9
     ```
-2. 执行交互脚本,自动生成配置文件(Run the script to setup folders with required ownership. This is an interactive script.)<br>
+2. 执行交互脚本,自动生成配置文件(Run the script to setup folders with required ownership. This is an interactive script.)
+    ```
     \# ./config.sh<br>
     <br>
     Beginning JFrog Artifactory setupM<br>
@@ -75,7 +76,7 @@ docker-compose version 1.29.2, build 5becea4c
     NOTE: The compose file uses several environment variables from the .env file. Remember to run from within the [/root/artifactory-pro-7.33.9] folder<br>
     <br>
     Done<br>
-    
+    ```
 3. 修改配置(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```
     # vim $JFROG_HOME/artifactory/var/etc/system.yaml
