@@ -92,7 +92,7 @@
     
 3. 修改配置(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```
-    # vim /opt/jfrog/artifactory/var/etc/system.yaml
+    # vi /opt/jfrog/artifactory/var/etc/system.yaml
     shared:
     ....
       node:
@@ -136,7 +136,7 @@ Run this command from the extracted folder.)<br>
 
     Validating System requirements
 
-I   f you are not performing an upgrade, you can ignore the following question and press y
+    If you are not performing an upgrade, you can ignore the following question and press y
     Have you disconnected Artifactory Xray pairings, except one prior to performing this upgrade (Refer http://service.jfrog.org/wiki/Xray+and+Artifactory+One+to+One+Pairing for more details) ? [y/N]: y
 
     Installation Directory (Default: /root/.jfrog/xray): /opt/jfrog/xray
@@ -219,7 +219,12 @@ I   f you are not performing an upgrade, you can ignore the following question a
     ```
 5. 查看日志(Check Xray Log.)
     ```
-    # tail -f /opt/jfrog/xray/var/log/console.log
+    # docker-compose -p xray logs -f
+    ....
+    router_1         | ###############################################################
+    router_1         | ###   All services started successfully in 32.332 seconds   ###
+    router_1         | ###############################################################
+    ....
     ```
 6. 访问Xray(Access Xray from your browser)
     >http://jfrogUrl
