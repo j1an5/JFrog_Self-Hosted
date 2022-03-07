@@ -1,18 +1,35 @@
 # Single Node Installation
 ## Docker Compose Installation
 
+### 前置条件
+#### Docker-ce [安装](https://docs.docker.com/compose/install/)
+```
+yum install -y yum-utils   device-mapper-persistent-data   lvm2
+yum-config-manager   --add-repo    https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce  -y
+systemctl start docker && systemctl enable docker 
+```
+#### Docker-compose [安装](https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/)
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+```
+```
+# docker-compose --version
+docker-compose version 1.29.2, build 5becea4c
+```
+
 ### Artifactory
-1. Extract the contents of the compressed archive (.tar.gz file) and then go to the extracted folder.
+1. 下载并解压,进入解压后的目录(Extract the contents of the compressed archive)
     ```
-    # wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/docker/jfrog-artifactory-pro/7.33.9/jfrog-artifactory-pro-7.33.9-compose.tar.gz
-    # tar -xvf jfrog-artifactory-pro-<version>-compose.tar.gz
-    # cd jfrog-artifactory-pro-<version>
+    wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/docker/jfrog-artifactory-pro/7.33.9/jfrog-artifactory-pro-7.33.9-compose.tar.gz
+    tar -xvf jfrog-artifactory-pro-<version>-compose.tar.gz
+    cd jfrog-artifactory-pro-<version>
     ```
-2. Run the script to setup folders with required ownership. This is an interactive script.
+2. 执行交互脚本,自动生成配置文件(Run the script to setup folders with required ownership. This is an interactive script.)
     ```
-    # ./config.sh
+    ./config.sh
     ```
-3. Customize the product configuration (optional) including database, Java Opts, and filestore.
+3. 修改配置(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```
     # vim $JFROG_HOME/artifactory/var/etc/system.yaml
     shared:
@@ -22,19 +39,25 @@
         ip: "192.168.xx.xx”
     ....
     ```
-4. Manage Artifactory using native Docker Compose commands, docker-compose -p rt <action> command.<br>
-Run this command from the extracted folder.
+4. 启停Artifactory及PostgreSQL(Manage Artifactory using native Docker Compose commands, docker-compose -p rt <action> command.<br>
+Run this command from the extracted folder.)<br>
+    >启动
     ```
-    # docker-compose -p rt-postgres -f docker-compose-postgres.yaml up -d
-    # docker-compose -p rt up -d
-    # docker-compose -p rt ps
-    # docker-compose -p rt down
+    docker-compose -p rt-postgres -f docker-compose-postgres.yaml up -d
+    docker-compose -p rt up -d
     ```
-6. Check Artifactory Log.
+    >停止
     ```
-    # docker-compose -p rt logs
+    docker-compose -p rt down
+    docker-compose -p rt-postgres -f docker-compose-postgres.yaml down
+
     ```
-7. Access Artifactory from your browser at: http://SERVER_HOSTNAME:8082/ui/. For example, on your local machine: http://localhost:8082/ui/.
+5. Check Artifactory Log.
+    ```
+    docker-compose -p rt logs
+    ```
+6. 访问Artifactory(Access Artifactory from your browser.)
+    > http://SERVER_HOSTNAME:8082
 
 ### Xray
 1. Extract the contents of the compressed archive and go to the extracted folder.
