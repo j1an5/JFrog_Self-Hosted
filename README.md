@@ -45,10 +45,14 @@ Below are the products you have access to for each subscription.
 | Enterprise+ | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Insight: Manage DevOps Insights <br>JFrog Xray: Security and Compliance Scanning <br>JFrog Pipelines: CI/CD pipeline orchestration  <br>JFrog Distribution: Global software distribution |
 
 ## Download
-### [Previous Releases](https://jfrog.com/download-legacy/)
+### [历史版本下载链接](https://jfrog.com/download-legacy/)
 
 ## 演示环境准备
-Cenotos7.x虚拟机  2台 [(VirtualBox提供:4c8g200G最小化安装)](https://github.com/alexwang66/Guestbook-microservices-k8s/blob/master/Virtualbox安装虚拟机配置双网卡.md)
+Cenotos7.x虚拟机  2台 [(VirtualBox提供)](https://github.com/alexwang66/Guestbook-microservices-k8s/blob/master/Virtualbox安装虚拟机配置双网卡.md)
+>2c4g100G for Artifactory<br>
+>4c8g200G for Xray<br>
+>所有磁盘空间都分给"/"目录
+
 >服务器时区和时间配置
 ```shell
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
