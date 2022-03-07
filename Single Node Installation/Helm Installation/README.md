@@ -1,62 +1,112 @@
 # Single Node Installation
 ## Helm Installation
 
-### Artifactory
-1. Add the ChartCenter Helm repository to your Helm client.
+### 前置条件
+1. 演示环境[准备](https://github.com/j1an5/JFrog_Self-Hosted#%E6%BC%94%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
+2. Docker-ce [安装](https://docs.docker.com/compose/install/)
     ```
-    # helm repo add jfrog-charts https://releases.jfrog.io/artifactory/jfrog-charts
+    yum install -y yum-utils device-mapper-persistent-data lvm2
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    yum install docker-ce -y
+    systemctl start docker && systemctl enable docker 
     ```
-2. Update the repository.
+    ```
+    # docker --version
+    Docker version 20.10.12, build e91ed57
 
+3. Kubectl [安装-本文使用的是阿里镜像源](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
     ```
-    # helm repo update
+    cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+    [kubernetes]
+    name=Kubernetes
+    baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+    enabled=1
+    gpgcheck=1
+    repo_gpgcheck=1
+    gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+    EOF
+    setenforce 0
+    yum install -y
     ```
-3. Install the chart with the release name artifactory and with master key and join key.
     ```
-    # kubectl create namespace <your namespace>
-    # helm upgrade --install artifactory jfrog-charts/artifactory \
-        --namespace <your namespace> \
+    # kubectl version
+    Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.4", GitCommit:"e6c093d87ea4cbb530a7b2ae91e54c0842d8308a", GitTreeState:"clean", BuildDate:"2022-02-16T12:38:05Z", GoVersion:"go1.17.7", Compiler:"gc", Platform:"linux/amd64"}
+    The connection to the server localhost:8080 was refused - did you specify the right host or port?
+    ```
+4. Helm [安装](https://helm.sh/docs/intro/install/)
+    ```
+    wget https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz
+    tar -xf helm-v3.8.0-linux-amd64.tar.gz
+    cp -rp linux-amd64/helm /usr/local/bin/helm
+    ```
+    ```
+    # helm version
+    version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c9eb092e", GitTreeState:"clean", GoVersion:"go1.17.5"}
+    ```
+5. K8s [本文使用rancher安装k8s]()
+    >运行Rancher
+    ```
+    docker pull rancher/rancher:latest
+    docker run -d --restart=unless-stopped \
+    -p 80:80 -p 443:443 \
+    --privileged \
+    rancher/rancher:latest
+    ```
+    >安装K8s机群<br>
+    Clusters -> Create -> Custom -> Cluster Name -> Next -> "etcd + Control Plane + Worker"<br>
+    Copy -> End.<br>
+    ![K8s create 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%201.png)
+    ![K8s create 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%202.png)
+    ![K8s create 3](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%203.png)
+    ![K8s create 4](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%204.png)
+    ![K8s create 5](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%205.png)
+    
+
+### Artifactory
+1. 设置Helm仓库(Add the ChartCenter Helm repository to your Helm client.)
+    ```
+    helm repo add jfrog-charts https://releases.jfrog.io/artifactory/jfrog-charts
+    helm repo update
+    ```
+2. 安装Artifactory,本文使用的版本是107.33.9-对应RPM的7.33.9版本(Install the chart with the release name artifactory)
+    ```
+    kubectl create namespace artifactory
+    helm upgrade --install artifactory jfrog-charts/artifactory \
+        --namespace artifactory \
         --set postgresql.enabled=false \
         --set nginx.service.type="NodePort"  \
         --version 107.33.9
     ```
-4. To access the logs, find the name of the pod using this command.
+3. To access the logs, find the name of the pod using this command.
     ```
-    # kubectl --namespace <your namespace> get pods
-    # kubectl --namespace <your namespace> logs -f <name of the pod>
+    kubectl --namespace artifactory get pods
+    kubectl --namespace artifactory logs -f <name of the pod>
     ```
-5. Connect to Artifactory.
+4. 访问Artifactory(Connect to Artifactory.)
     ```
-    # export NODE_PORT=$(kubectl get --namespace <your namespace> -o jsonpath="{.spec.ports[0].nodePort}" services artifactory-artifactory-nginx)
-    # export NODE_IP=$(kubectl get nodes --namespace artifactory -o jsonpath={.items[0].status.addresses[0].address}")
-    # echo http://$NODE_IP:$NODE_PORT/
+    export NODE_PORT=$(kubectl get --namespace artifactory -o jsonpath="{.spec.ports[0].nodePort}" services artifactory-artifactory-nginx)
+    export NODE_IP=$(kubectl get nodes --namespace artifactory -o jsonpath={.items[0].status.addresses[0].address}")
+    echo http://$NODE_IP:$NODE_PORT/
     ```
+    > http://NODE_IP:NODE_PORT
 
 
 ### Xray
-1. Add the ChartCenter Helm repository to your Helm client.
-    ```
-    # helm repo add jfrog-charts https://releases.jfrog.io/artifactory/jfrog-charts
-    ```
-2. Update the repository.
-
-    ```
-    # helm repo update
-    ```
-3. Initiate installation by providing a join key and JFrog url as a parameter to the Xray chart installation.
+1. 安装xray,本文使用的版本是103.43.1,对应RPM的3.43.1版本(Initiate installation by providing a join key and JFrog url as a parameter to the Xray chart installation.)
     >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
     ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
     ```
-    # kubectl create namespace <your namespace>
+    # kubectl create namespace xray
     # helm upgrade --install xray jfrog/xray \
-        --namespace <your namespace> \
+        --namespace xray \
         --set postgresql.persistence.size=150Gi \
         --set xray.joinKey=<RT_JOIN_KEY> \
         --set xray.jfrogUrl=<RT_BASE_URL> \
         --version 103.43.1
     ```
-4. Check the status of your deployed Helm release.
+4. 检查状态及日志(Check the status of your deployed Helm release.)
     ```
-    # helm status xray
+    helm status xray
     ```
-5. Access Xray from your browser at: http://<jfrogUrl>/ui/: go to the Xray Security & Compliance tab in the Administration module in the UI
+5. 访问Xray(Access Xray from your browser)
+    >http://jfrogUrl
