@@ -25,8 +25,8 @@ docker-compose version 1.29.2, build 5becea4c
     tar -xvf jfrog-artifactory-pro-7.33.9-compose.tar.gz
     cd artifactory-pro-7.33.9
     ```
-2. 执行交互脚本,自动生成配置文件(Run the script to setup folders with required ownership. This is an interactive script.)
-    >\# ./config.sh<br>
+2. 执行交互脚本,自动生成配置文件(Run the script to setup folders with required ownership. This is an interactive script.)<br>
+    \# ./config.sh<br>
     <br>
     Beginning JFrog Artifactory setupM<br>
     <br>
