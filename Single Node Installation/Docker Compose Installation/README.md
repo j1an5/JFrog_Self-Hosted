@@ -111,21 +111,21 @@ Run this command from the extracted folder.)<br>
     > http://SERVER_HOSTNAME:8082
 
 ### Xray
-1. Extract the contents of the compressed archive and go to the extracted folder.
+1. 下载安装包,解压并进入目录,本文使用的版本是3.43.1(Extract the contents of the compressed archive and go to the extracted folder.)
     ```
-    # wget https://releases.jfrog.io/artifactory/jfrog-xray/xray-compose/3.43.1/jfrog-xray-3.43.1-compose.tar.gz
-    # tar -xvf jfrog-xray-<version>-<compose|rpm|deb>.tar.gz
-    # cd jfrog-xray-<version>-compose
+    wget https://releases.jfrog.io/artifactory/jfrog-xray/xray-compose/3.43.1/jfrog-xray-3.43.1-compose.tar.gz
+    tar -xvf jfrog-xray-3.43.1-compose.tar.gz
+    cd jfrog-xray-3.43.1-compose
     ```
-2. Run the installer script.
+2. 执行./config.sh生成配置文件(Run the installer script.)
     >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
     ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
     ```
     # ./config.sh
     ```
-3. Customize the product configuration
+3. 修改配置(Customize the product configuration)
     ```
-    # vim $JFROG_HOME/xray/var/etc/system.yaml
+    # vim /opt/jfrog/xray/var/etc/system.yaml
     configVersion: 1
         ......
         node:
@@ -133,17 +133,15 @@ Run this command from the extracted folder.)<br>
           ip: "192.168.xx.xx"
         ....
     ```
-4. Start and manage the Xray service.
+4. 启动Postgresql、Rabbitmq及Xray(Start and manage the Xray service.)
     ```
-    # docker-compose -p xray-rabbitmq -f docker-compose-rabbitmq.yaml up -d
-    # docker-compose -p xray-postgres -f docker-compose-postgres.yaml up -d
-    # docker-compose -p xray up -d
-    # docker-compose -p xray ps
-    # docker-compose -p xray down
+    docker-compose -p xray-rabbitmq -f docker-compose-rabbitmq.yaml up -d
+    docker-compose -p xray-postgres -f docker-compose-postgres.yaml up -d
+    docker-compose -p xray up -d
     ```
-5. Check Xray Log.
+5. 查看日志(Check Xray Log.)
     ```
-    # tail -f $JFROG_HOME/xray/var/log/console.log
+    # tail -f /opt/jfrog/xray/var/log/console.log
     ```
-6. Access Xray from your browser at: http://\<jfrogUrl>/ui/, go the Dashboard tab in the Application module in the UI.
-
+6. 访问Xray(Access Xray from your browser)
+    >http://jfrogUrl
