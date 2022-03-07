@@ -2,7 +2,9 @@
 ## Docker Compose Installation
 
 ### 前置条件
-#### Docker-ce [安装](https://docs.docker.com/compose/install/)
+
+#### 1. 演示环境[准备](https://github.com/j1an5/JFrog_Self-Hosted#%E6%BC%94%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
+#### 2. Docker-ce [安装](https://docs.docker.com/compose/install/)
 ```
 yum install -y yum-utils   device-mapper-persistent-data   lvm2
 yum-config-manager   --add-repo    https://download.docker.com/linux/centos/docker-ce.repo
@@ -13,7 +15,7 @@ systemctl start docker && systemctl enable docker
 # docker version
 Docker version 20.10.12, build e91ed57
 ```
-#### Docker-compose [安装](https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/)
+#### 3. Docker-compose [安装](https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/)
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
 ```
