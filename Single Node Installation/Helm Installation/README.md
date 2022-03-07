@@ -70,11 +70,11 @@
     clusters:
     - cluster:
         certificate-authority-data: DATA+OMITTED
-        server: https://192.168.56.110/k8s/clusters/c-l82z7
+        server: https://192.168.xx.xxx/k8s/clusters/c-l82z7
       name: k8s
     - cluster:
         certificate-authority-data: DATA+OMITTED
-        server: https://10.0.3.15:6443
+        server: https://10.0.x.xx:6443
       name: k8s-bogon
     contexts:
     - context:
@@ -92,6 +92,12 @@
     - name: k8s
       user:
         token: REDACTED
+    ```
+6. 安装Longhorn (作为K8s默认存储)
+    ```
+    yum install iscsi-initiator-utils -y
+    kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.2.3/deploy/longhorn.yaml
+    kubectl patch storageclass longhorn -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}’
     ```
 
 ### Artifactory
@@ -112,12 +118,12 @@
 3. 查看日志(To access the logs, find the name of the pod using this command.)
     ```
     kubectl --namespace artifactory get pods
-    kubectl --namespace artifactory logs -f <name of the pod>
+    kubectl --namespace artifactory describe pod <name of the pod>
     ```
 4. 访问Artifactory(Connect to Artifactory.)
     ```
     export NODE_PORT=$(kubectl get --namespace artifactory -o jsonpath="{.spec.ports[0].nodePort}" services artifactory-artifactory-nginx)
-    export NODE_IP=$(kubectl get nodes --namespace artifactory -o jsonpath={.items[0].status.addresses[0].address}")
+    export NODE_IP=$(kubectl get nodes --namespace artifactory -o jsonpath="{.items[0].status.addresses[0].address}")
     echo http://$NODE_IP:$NODE_PORT/
     ```
     > http://NODE_IP:NODE_PORT
