@@ -131,7 +131,6 @@ Run this command from the extracted folder.)<br>
     ```
     # ./config.sh
 
-
     Beginning JFrog Xray setup
 
 
