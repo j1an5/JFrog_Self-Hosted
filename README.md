@@ -59,7 +59,7 @@ yum -y install ntpdate net-tools
 ```shell
 echo "*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
 ```
->关闭防火墙
+>关闭防火墙 (在Docker compose 的安装方式中,不执行此步骤)
 ```shell
 systemctl disable firewalld && systemctl stop firewalld
 ```
