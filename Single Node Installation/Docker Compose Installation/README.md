@@ -23,9 +23,9 @@
     # docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
     ```
-4. File Handle Allocation Limit
+4. 文件句柄数设置[File Handle Allocation Limit](https://www.jfrog.com/confluence/display/JFROG/System+Requirements#SystemRequirements-Xray)
     ```
-    # vim /etc/security/limits.conf
+    # vi /etc/security/limits.conf
     root hard nofile 100000
     root soft nofile 100000
     xray hard nofile 100000
