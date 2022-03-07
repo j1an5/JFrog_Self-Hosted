@@ -13,7 +13,7 @@
     ```
     # docker --version
     Docker version 20.10.12, build e91ed57
-
+    ```
 3. Kubectl [安装-本文使用的是阿里镜像源](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
     ```
     cat <<EOF > /etc/yum.repos.d/kubernetes.repo
@@ -26,7 +26,7 @@
     gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
     EOF
     setenforce 0
-    yum install -y
+    yum install -y kubectl
     ```
     ```
     # kubectl version
@@ -44,7 +44,7 @@
     version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c9eb092e", GitTreeState:"clean", GoVersion:"go1.17.5"}
     ```
 5. K8s [本文使用rancher安装k8s]()
-    >运行Rancher
+    >1.运行Rancher
     ```
     docker pull rancher/rancher:latest
     docker run -d --restart=unless-stopped \
@@ -52,7 +52,7 @@
     --privileged \
     rancher/rancher:latest
     ```
-    >安装K8s机群<br>
+    >2.安装K8s机群<br>
     Clusters -> Create -> Custom -> Cluster Name -> Next -> "etcd + Control Plane + Worker"<br>
     Copy -> End.<br>
     ![K8s create 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%201.png)
@@ -60,7 +60,39 @@
     ![K8s create 3](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%203.png)
     ![K8s create 4](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%204.png)
     ![K8s create 5](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20create%205.png)
-    
+ 
+    >3.配置kubectl config<br>
+    Download KubeConfig -> 保存到 ~/.kube/config中<br>
+    ![k8s config file](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/K8s%20config%20file.png)
+    ```
+    # kubectl config view
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: DATA+OMITTED
+        server: https://192.168.56.110/k8s/clusters/c-l82z7
+      name: k8s
+    - cluster:
+        certificate-authority-data: DATA+OMITTED
+        server: https://10.0.3.15:6443
+      name: k8s-bogon
+    contexts:
+    - context:
+        cluster: k8s
+        user: k8s
+      name: k8s
+    - context:
+        cluster: k8s-bogon
+        user: k8s
+      name: k8s-bogon
+    current-context: k8s
+    kind: Config
+    preferences: {}
+    users:
+    - name: k8s
+      user:
+        token: REDACTED
+    ```
 
 ### Artifactory
 1. 设置Helm仓库(Add the ChartCenter Helm repository to your Helm client.)
@@ -77,7 +109,7 @@
         --set nginx.service.type="NodePort"  \
         --version 107.33.9
     ```
-3. To access the logs, find the name of the pod using this command.
+3. 查看日志(To access the logs, find the name of the pod using this command.)
     ```
     kubectl --namespace artifactory get pods
     kubectl --namespace artifactory logs -f <name of the pod>
