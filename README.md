@@ -49,7 +49,7 @@ Below are the products you have access to for each subscription.
 
 ## 演示环境准备
 Cenotos7.x虚拟机  2台 [(VirtualBox提供)](https://github.com/alexwang66/Guestbook-microservices-k8s/blob/master/Virtualbox安装虚拟机配置双网卡.md)
->虚机的推荐配置,所有磁盘空间都分给"/"目录<br>
+>虚机的推荐配置如下,所有磁盘空间都分给"/"目录<br>
 >* 2c4g100G for Artifactory<br>
 >* 4c8g200G for Xray<br>
 >* 8c16g300G for K8s<br>
