@@ -46,7 +46,9 @@ Below are the products you have access to for each subscription.
 
 ## Download
 ### [历史版本下载链接](https://jfrog.com/download-legacy/)
-
+>默认账户和密码(Default credential for Artifactory:)<br>
+user: admin<br>
+password: password
 ## 演示环境准备
 Cenotos7.x虚拟机  2台 [(VirtualBox提供)](https://github.com/alexwang66/Guestbook-microservices-k8s/blob/master/Virtualbox安装虚拟机配置双网卡.md)
 >虚机的推荐配置如下,所有磁盘空间都分给"/"目录<br>
@@ -71,9 +73,7 @@ systemctl disable firewalld && systemctl stop firewalld
 ![测试环境准备](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87.png)
 
 ## Single Node Installation
->Default credential for Artifactory:<br>
-user: admin<br>
-password: password
+
 ### [Linux Archive Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/Linux%20Archive%20Installation/README.md)
 ### [RPM Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/RPM%20Installation/README.md)
 ### [Docker Compose Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/Docker%20Compose%20Installation/README.md)
