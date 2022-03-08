@@ -173,7 +173,9 @@
     ```
 4. 检查状态及日志(Check the status of your deployed Helm release.)
     ```
-    helm status xray
+    kubectl --namespace xray get pods
+    kubectl --namespace xray describe pod <name of the pod>
+    kubectl --namespace xray logs -f <name of the pod> <container name>
     ```
 5. 访问Xray(Access Xray from your browser)
     >http://jfrogUrl
