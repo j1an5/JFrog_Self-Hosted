@@ -176,6 +176,12 @@
     kubectl --namespace xray get pods
     kubectl --namespace xray describe pod <name of the pod>
     kubectl --namespace xray logs -f <name of the pod> <container name>
+    e.i. kubectl --namespace xray logs -f xray-0 xray-server
+    ....
+    ###############################################################
+    ###   All services started successfully in xx.xxx seconds   ###
+    ###############################################################
+    ....
     ```
 5. 访问Xray(Access Xray from your browser)
     >http://jfrogUrl
