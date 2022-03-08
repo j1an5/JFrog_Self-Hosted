@@ -1,6 +1,10 @@
 # Single Node Installation
 ## Linux Archive Installation
 
+### 前置条件
+
+1. 演示环境[准备](https://github.com/j1an5/JFrog_Self-Hosted#%E6%BC%94%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
+
 ### Artifactory
 1. 设置环境变量,JFrog主目录 JFORG_HOME(Set the JFrog Home environment variable)
     ```shell
