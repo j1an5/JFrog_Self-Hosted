@@ -79,8 +79,8 @@ systemctl disable firewalld && systemctl stop firewalld
 ### [Docker Compose Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/Docker%20Compose%20Installation/README.md)
 ### [Helm Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/Helm%20Installation/README.md)
 
-![pic1](){:height="50%" width="50%"}
-![pic2](){:height="50%" width="50%"}
+
+## JFrog小助手和公众号
 <img src="https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg" width = "100" height = "100" alt="" align=center />
 <img src="https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/%E5%B0%8F%E5%8A%A9%E6%89%8B%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg" width = "100" height = "100" alt="" align=center />
 
