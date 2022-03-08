@@ -156,12 +156,13 @@
 
 
 ### Xray
-1. 安装xray,本文使用的版本是103.43.1,对应RPM的3.43.1版本(Initiate installation by providing a join key and JFrog url as a parameter to the Xray chart installation.)
+1. 安装xray,本文使用的版本是103.43.1,对应RPM的3.43.1版本(Initiate installation by providing a join key and JFrog url as a parameter to the Xray chart installation.)<br>
+    * 参数设置[参考](https://github.com/jfrog/charts/blob/master/stable/xray/values.yaml)
     >![Artifactory Join Key 1](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%201.png?raw=true)
     ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
     ```
-    # kubectl create namespace xray
-    # helm upgrade --install xray jfrog-charts/xray \
+    kubectl create namespace xray
+    helm upgrade --install xray jfrog-charts/xray \
         --namespace xray \
         --set common.persistence.size=50Gi \
         --set postgresql.persistence.size=150Gi \
