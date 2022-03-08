@@ -93,7 +93,7 @@
       user:
         token: REDACTED
     ```
-6. 安装Longhorn (作为K8s默认存储)
+6. 安装Longhorn (作为K8s默认存储) [安装参考](https://longhorn.io/docs/1.2.3/deploy/install/install-with-kubectl/)
     ```
     yum install iscsi-initiator-utils wget -y
     wget https://raw.githubusercontent.com/longhorn/longhorn/v1.2.3/deploy/longhorn.yaml
@@ -144,6 +144,7 @@
     ```
     kubectl --namespace artifactory get pods
     kubectl --namespace artifactory describe pod <name of the pod>
+    kubectl --namespace artifactory logs -f <name of the pod>
     ```
 4. 访问Artifactory(Connect to Artifactory.)
     ```
@@ -160,9 +161,11 @@
     ![Artifactory Join Key 2](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/Artifactory%20Join%20Key%202.png?raw=true)
     ```
     # kubectl create namespace xray
-    # helm upgrade --install xray jfrog/xray \
+    # helm upgrade --install xray jfrog-charts/xray \
         --namespace xray \
+        --set common.persistence.size=50Gi \
         --set postgresql.persistence.size=150Gi \
+        --set rabbitmq.persistence.size=20Gi \
         --set xray.joinKey=<RT_JOIN_KEY> \
         --set xray.jfrogUrl=<RT_BASE_URL> \
         --version 103.43.1
@@ -173,3 +176,29 @@
     ```
 5. 访问Xray(Access Xray from your browser)
     >http://jfrogUrl
+
+
+### 常见问题
+1. Xray启动:<br>
+    >报错:<br>
+    Warning  FailedAttachVolume  15s (x7 over 51s)  attachdetach-controller  AttachVolume.Attach failed for volume "pvc-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2" : rpc error: code = Aborted desc = volume pvc-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2 is not ready for workloads<br>
+    原因:<br>
+    pvc无法正常提供服务,如-<br>
+    pvc2需要的空间为150Gi,实际磁盘只有73G剩余,无法满足Xray所需,处理方案:
+    ```
+    # kubectl --namespace xray get pvc
+    NAME                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+    data-volume-xray-0       Bound    pvc-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1   50Gi       RWO            longhorn       88s
+    data-xray-postgresql-0   Bound    pvc-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2   150Gi      RWO            longhorn       88s
+    data-xray-rabbitmq-0     Bound    pvc-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx3   20Gi       RWO            longhorn       88s
+    # df -hT /
+    Filesystem              Type  Size  Used Avail Use% Mounted on
+    /dev/mapper/centos-root xfs   200G  123G   73G  62% /
+    ```
+    >方案一: 为pvc提供足够的空间,磁盘扩容(或更换为磁盘大的虚机,或增加新的k8s节点)<br>
+    方案二: 清理pvc后,设置postgresql.persistence.size=50Gi,可以启动成功,但是后续使用Xray扫描功能受影响,清理操作如下:
+    ```
+    helm --namespace xray delete xray
+    kubectl --namespace xray delete pvc data-volume-xray-0 data-xray-postgresql-0 data-xray-rabbitmq-0
+    ```
+
