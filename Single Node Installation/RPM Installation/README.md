@@ -1,6 +1,10 @@
 # Single Node Installation
 ## RPM Installation
 
+### 前置条件
+
+1. 演示环境[准备](https://github.com/j1an5/JFrog_Self-Hosted#%E6%BC%94%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
+
 ### Artifactory
 1. 安装Artifactory,本文使用的版本是7.33.9(Install Artifactory as a service on Red Hat compatible Linux distributions, as a root user）
     ```
