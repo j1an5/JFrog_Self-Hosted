@@ -70,16 +70,16 @@ echo "*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
 ```shell
 systemctl disable firewalld && systemctl stop firewalld
 ```
-![测试环境准备](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/resource/images/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87.png)
+![测试环境准备](./resource/images/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87.png)
 
 ## Single Node Installation
 
-### [Linux Archive Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/Linux%20Archive%20Installation/README.md)
-### [RPM Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/RPM%20Installation/README.md)
-### [Docker Compose Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/Docker%20Compose%20Installation/README.md)
-### [Helm Installation](https://github.com/j1an5/JFrog_Self-Hosted/blob/main/Single%20Node%20Installation/Helm%20Installation/README.md)
+### [Linux Archive Installation](./Single%20Node%20Installation/Linux%20Archive%20Installation/README.md)
+### [RPM Installation](./Single%20Node%20Installation/RPM%20Installation/README.md)
+### [Docker Compose Installation](./Single%20Node%20Installation/Docker%20Compose%20Installation/README.md)
+### [Helm Installation](./Single%20Node%20Installation/Helm%20Installation/README.md)
 
 
 ## JFrog小助手和公众号
-<img src="./resource/images/%E5%B0%8F%E5%8A%A9%E6%89%8B%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg" width = "100" height = "100" alt="" align=center />
+<img src="./resource/images/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg" width = "100" height = "100" alt="" align=center />      <img src="./resource/images/%E5%B0%8F%E5%8A%A9%E6%89%8B%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg" width = "100" height = "100" alt="" align=center />
 
