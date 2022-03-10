@@ -6,17 +6,15 @@ In this section, you will find information to get you started with installing or
 
 **To get started with a new installation**, you'll need to know the following:
 
-1. Your subscription type. If you don’t have an existing subscription, [Start a Free Trial](https://www.jfrogchina.com/start-free/).
-2. Your selected JFrog products to install.
-3. Review the System Architecture and System Requirements
-4. Plan your new installation.
+1. 申请试用License的链接 [Start a Free Trial](https://www.jfrogchina.com/start-free/).
+2. 确定要安装的产品
+3. 查看架构和安全 [System Architecture](https://www.jfrog.com/confluence/display/JFROG/System+Architecture) and [System Requirements](https://www.jfrog.com/confluence/display/JFROG/System+Requirements)
+4. 准备服务器
 
 ### Installing JFrog Products by Subscription Type
-To use JFrog products, you'll need to first install JFrog Artifactory. Once installed, you can continue to install additional products according to your subscription type and organization needs. 
+>安装JFrog平台,首先需要安装Artifactory<br>
 
->The new major versions of the JFrog Platform products are not backward compatible with previous major versions.
-
-JFrog products should be installed in the following order:
+JFrog各产品的安装顺序
 
 1. [Install Artifactory](https://www.jfrog.com/confluence/display/JFROG/Installing+Artifactory)
 2. Install Insight (Enterprise/Enterprise+ only)
@@ -31,21 +29,20 @@ JFrog products should be installed in the following order:
     * Configure Distribution
 7. Install Pipelines
 
-Below are the products you have access to for each subscription. 
->Products in purple are mandatory and products in black are optional depending on your organization needs.
+不同订阅对应的产品
 
 | Subscription Type | JFrog Products to Install |
 | ---- | ---- |
-| Artifactory OSS (Free) |JFrog Artifactory Open Source: Maven and Generic Package Manager Repository |
-| Artifactory CE (Free) | JFrog Artifactory Conan Edition: Conan C/C++ and Generic Package Manager Repository |
-| JFrog Container Registry (Free) | JFrog Container Registry (Powered by Artifactory): Docker, Helm and Generic Package Manager Repository |
+| Artifactory OSS (Free) |JFrog Artifactory Open Source: Maven and Generic Package Manager Repository<br>[OSS安装包](https://jfrog.com/community/open-source/)|
+| Artifactory CE (Free) | JFrog Artifactory Conan Edition: Conan C/C++ and Generic Package Manager Repository<br>[CE安装包](https://jfrog.com/distribution/?bintrayRD=1) |
+| JFrog Container Registry (Free) | JFrog Container Registry (Powered by Artifactory): Docker, Helm and Generic Package Manager Repository<br>[Container安装包](https://jfrog.com/download-jfrog-container-registry/) |
 | Pro | JFrog Artifactory: Universal Package Manager Repository |
 | Pro X | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Xray: Security and Compliance Scanning |
 | Enterprise X | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Xray: Security and Compliance Scanning |
 | Enterprise+ | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Insight: Manage DevOps Insights <br>JFrog Xray: Security and Compliance Scanning <br>JFrog Pipelines: CI/CD pipeline orchestration  <br>JFrog Distribution: Global software distribution |
 
-## Download
-### [历史版本下载链接](https://jfrog.com/download-legacy/)
+## 安装包下载链接
+>[安装包](https://jfrog.com/download-legacy/)<br>
 >默认账户和密码(Default credential for Artifactory:)<br>
 user: admin<br>
 password: password
