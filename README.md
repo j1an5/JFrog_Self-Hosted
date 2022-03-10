@@ -5,7 +5,7 @@
 
 1. 申请试用License的链接 [Start a Free Trial](https://www.jfrogchina.com/start-free/).
 2. 确定要安装的产品
-3. 查看架构和安全 [System Architecture](https://www.jfrog.com/confluence/display/JFROG/System+Architecture) and [System Requirements](https://www.jfrog.com/confluence/display/JFROG/System+Requirements)
+3. 查看架构和系统要求 [System Architecture](https://www.jfrog.com/confluence/display/JFROG/System+Architecture) and [System Requirements](https://www.jfrog.com/confluence/display/JFROG/System+Requirements)
 4. 准备服务器
 
 ### JFrog各产品的安装顺序
