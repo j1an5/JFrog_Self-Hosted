@@ -1,20 +1,14 @@
-# Installing the JFrog Platform
-This section will help you get started with the JFrog Platform installation initial steps and planning.
+# 安装 JFrog Platform
+本文将带你了解JFrog的订阅类型,并提供了几种安装方式。
 
-## Before You Begin
-In this section, you will find information to get you started with installing or upgrading whether you are a new user or an existing user to the JFrog Platform. Depending on your subscription type and organization's needs, you can install the complete set of JFrog products or start with JFrog Artifactory as the base. To learn about the JFrog supported subscriptions, see the JFrog offering.
-
-**To get started with a new installation**, you'll need to know the following:
+## 步骤
 
 1. 申请试用License的链接 [Start a Free Trial](https://www.jfrogchina.com/start-free/).
 2. 确定要安装的产品
 3. 查看架构和安全 [System Architecture](https://www.jfrog.com/confluence/display/JFROG/System+Architecture) and [System Requirements](https://www.jfrog.com/confluence/display/JFROG/System+Requirements)
 4. 准备服务器
 
-### Installing JFrog Products by Subscription Type
->安装JFrog平台,首先需要安装Artifactory<br>
-
-JFrog各产品的安装顺序
+### JFrog各产品的安装顺序
 
 1. [Install Artifactory](https://www.jfrog.com/confluence/display/JFROG/Installing+Artifactory)
 2. Install Insight (Enterprise/Enterprise+ only)
@@ -30,6 +24,7 @@ JFrog各产品的安装顺序
 7. Install Pipelines
 
 不同订阅对应的产品
+>安装JFrog平台,首先需要安装Artifactory
 
 | Subscription Type | JFrog Products to Install |
 | ---- | ---- |
@@ -41,7 +36,7 @@ JFrog各产品的安装顺序
 | Enterprise X | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Xray: Security and Compliance Scanning |
 | Enterprise+ | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Insight: Manage DevOps Insights <br>JFrog Xray: Security and Compliance Scanning <br>JFrog Pipelines: CI/CD pipeline orchestration  <br>JFrog Distribution: Global software distribution |
 
-## 安装包下载链接
+## 安装包及认证
 >[安装包](https://jfrog.com/download-legacy/)<br>
 >默认账户和密码(Default credential for Artifactory:)<br>
 user: admin<br>
