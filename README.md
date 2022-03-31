@@ -29,7 +29,7 @@
 | Subscription Type | JFrog Products to Install |
 | ---- | ---- |
 | Artifactory OSS (Free) |JFrog Artifactory Open Source: Maven and Generic Package Manager Repository<br>[OSS安装包](https://jfrog.com/community/open-source/)|
-| Artifactory CE (Free) | JFrog Artifactory Conan Edition: Conan C/C++ and Generic Package Manager Repository<br>[CE安装包](https://jfrog.com/distribution/?bintrayRD=1) |
+| Artifactory CE (Free) | JFrog Artifactory Conan Edition: Conan C/C++ and Generic Package Manager Repository<br>[CE安装包](https://conan.io/downloads.html) |
 | JFrog Container Registry (Free) | JFrog Container Registry (Powered by Artifactory): Docker, Helm and Generic Package Manager Repository<br>[Container安装包](https://jfrog.com/download-jfrog-container-registry/) |
 | Pro | JFrog Artifactory: Universal Package Manager Repository |
 | Pro X | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Xray: Security and Compliance Scanning |
