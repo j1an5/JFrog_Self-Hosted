@@ -15,11 +15,12 @@
     ```
     mkdir -p $JFROG_HOME && cd $JFROG_HOME/
     wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/7.33.9/jfrog-artifactory-pro-7.33.9-linux.tar.gz
+    rtV=7.33.9
     ```
 3. 提取压缩包并重命名(Extract the contents of the compressed archive and move it into the artifactory directory.)
     ```
-    tar -xvf jfrog-artifactory-pro-7.33.9-linux.tar.gz
-    mv artifactory-pro-7.33.9 artifactory
+    tar -xvf jfrog-artifactory-pro-${rtV}-linux.tar.gz
+    mv artifactory-pro-${rtV} artifactory
     ```
 4. 修改配置文件-必要(Customize the product configuration (optional) including database, Java Opts, and filestore.)
     ```terminal
