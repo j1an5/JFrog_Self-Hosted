@@ -73,7 +73,7 @@ net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 net.ipv6.conf.eth0.disable_ipv6 = 1
 ```
-在 /etc/sysctl.conf 使这些更改生效，运行以下命令：
+>使这些更改生效，运行以下命令：
 
 ```shell
 sudo sysctl -p /etc/sysctl.conf
