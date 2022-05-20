@@ -62,6 +62,24 @@ echo "*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
 ```shell
 systemctl disable firewalld && systemctl stop firewalld
 ```
+>关闭IpV6 (在Docker compose 的安装方式中,不执行此步骤)
+第一种方法是通过 /etc/sysctl.conf 文件对 /proc 进行永久修改。
+
+```shell
+sudo vi /etc/sysctl.conf
+#禁用整个系统所有接口的IPv6
+net.ipv6.conf.all.disable_ipv6 = 1
+#禁用某一个指定接口的IPv6(例如：eth0, lo)
+net.ipv6.conf.lo.disable_ipv6 = 1
+net.ipv6.conf.eth0.disable_ipv6 = 1
+```
+在 /etc/sysctl.conf 使这些更改生效，运行以下命令：
+
+```shell
+sudo sysctl -p /etc/sysctl.conf
+```
+
+
 ![测试环境准备](./resource/images/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87.png)
 
 ## Single Node Installation
