@@ -8,8 +8,9 @@
 ### Artifactory
 1. 安装Artifactory,本文使用的版本是7.33.9(Install Artifactory as a service on Red Hat compatible Linux distributions, as a root user）
     ```
-    wget https://releases.jfrog.io/artifactory/artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-7.33.9.rpm
-    yum install -y jfrog-artifactory-pro-7.33.9.rpm
+    export rt_version=7.33.9
+    wget https://releases.jfrog.io/artifactory/artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-${rt_version}.rpm
+    yum install -y jfrog-artifactory-pro-${rt_version}.rpm
     ```
     或安装最新版
     ```
