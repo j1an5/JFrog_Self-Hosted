@@ -53,21 +53,22 @@
 2. 创建主目录，进入主目录并下载安装包，本文使用的版本是3.43.1(Create a JFrog Home directory and move the downloaded installer archive into that directory, for example:)
     ```
     mkdir -p $JFROG_HOME && cd $JFROG_HOME/
-    wget https://releases.jfrog.io/artifactory/jfrog-xray/xray-rpm/3.43.1/jfrog-xray-3.43.1-rpm.tar.gz
+    export xr_version=3.43.1
+    wget https://releases.jfrog.io/artifactory/jfrog-xray/xray-rpm/${xr_version}/jfrog-xray-${xr_version}-rpm.tar.gz
     ```
 3. 提取压缩包,进入目录(Extract the contents of the compressed archive, and go to the extracted folder.)
     ```
-    tar -xvf jfrog-xray-3.43.1-rpm.tar.gz
-    cd jfrog-xray-3.43.1-rpm
+    tar -xvf jfrog-xray-${xr_version}-rpm.tar.gz
+    cd jfrog-xray-${xr_version}-rpm
     ```
 4. 前置条件(Prerequisites)
     1. PostgreSQL [安装](https://www.jfrog.com/confluence/display/JFROG/Installing+Xray#InstallingXray-InstallingPostgreSQL) & configure
         ```
         mkdir -p /var/opt/postgres/data
-        rpm -ivh --replacepkgs ./third-party/postgresql/libicu-50.2-4.el7_7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-libs-13.4-1PGDG.rhel7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-13.4-1PGDG.rhel7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-server-13.4-1PGDG.rhel7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/postgresql/libicu-*.el7_7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-libs-*.rhel7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-13.4-*.rhel7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-server-13.4-*.rhel7.x86_64.rpm
         chown -R postgres:postgres /var/opt/postgres
         echo 'export PGDATA="/var/opt/postgres/data"' >> /etc/profile
         echo 'export PGSETUP_INITDB_OPTIONS="-D /var/opt/postgres/data"' >> /etc/profile
@@ -96,7 +97,7 @@
     3. 创建Xray数据库及用户
         ```
         # su - postgres //切换用户并执行创建数据库脚本
-        $ POSTGRES_PATH=$(dirname $(readlink -f $(which psql))) $JFROG_HOME/jfrog-xray-3.43.1-rpm/third-party/postgresql/createPostgresUsers.sh
+        $ POSTGRES_PATH=$(dirname $(readlink -f $(which psql))) $JFROG_HOME/jfrog-xray-${xr_version}-rpm/third-party/postgresql/createPostgresUsers.sh
         ....main] - Waiting for Postgres to get ready using the commands: "/usr/pgsql-13/bin/psql --host=localhost --port=5432 --version" & "/usr/pgsql-13/bin/psql --host=localhost --port=5432 -l"
         ....main] - Postgres is ready. Executing commands
         ....main] - Postgres setup is now complete
@@ -104,12 +105,12 @@
         ```
     4. 安装Rabbitmq依赖(Install RabbitMQ dependencies.)
         ```
-        rpm -ivh --replacepkgs ./third-party/rabbitmq/socat-1.7.3.2-2.el7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/rabbitmq/erlang-23.2.3-1.el7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/rabbitmq/socat-*.el7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/rabbitmq/erlang-*.el7.x86_64.rpm
         ```
     5. 安装db-util(You can use the bundled db-utils RPM found under /third-party/misc/.)
         ```
-        yum install -y ./third-party/misc/libdb-utils-5.3.21-25.el7.x86_64.rpm
+        yum install -y ./third-party/misc/libdb-utils-*.el7.x86_64.rpm
         ```
 5. 安装Xray(Install Xray. You must run as a root user)
     ```
