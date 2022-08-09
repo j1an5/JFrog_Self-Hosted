@@ -97,7 +97,7 @@
     3. 创建Xray数据库及用户
         ```
         # su - postgres //切换用户并执行创建数据库脚本
-        $ POSTGRES_PATH=$(dirname $(readlink -f $(which psql))) $JFROG_HOME/jfrog-xray-${xr_version}-rpm/third-party/postgresql/createPostgresUsers.sh
+        $ POSTGRES_PATH=$(dirname $(readlink -f $(which psql))) $JFROG_HOME/jfrog-xray-*-rpm/third-party/postgresql/createPostgresUsers.sh
         ....main] - Waiting for Postgres to get ready using the commands: "/usr/pgsql-13/bin/psql --host=localhost --port=5432 --version" & "/usr/pgsql-13/bin/psql --host=localhost --port=5432 -l"
         ....main] - Postgres is ready. Executing commands
         ....main] - Postgres setup is now complete
