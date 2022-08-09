@@ -9,7 +9,7 @@
     ```
 2. 停止Xray服务
     ```
-    systemctl start xray
+    systemctl stop xray
     ```
 3. 解压并进入Xray目录
     ```
