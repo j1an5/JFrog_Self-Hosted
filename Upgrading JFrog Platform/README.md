@@ -10,7 +10,7 @@
 ### Single Node Upgrade - Artifactory
 
 * [Artifactory - Linux Archive Upgrade]()
-* [Artifactory - RPM Upgrade](./Upgrading%20JFrog%20Platform/Artifactory%20-%20RPM%20Upgrade/README.md)
+* [Artifactory - RPM Upgrade](../Upgrading%20JFrog%20Platform/Artifactory%20-%20RPM%20Upgrade/README.md)
 * [Artifactory - Docker Compose Upgrade]()
 * [Artifactory - Helm Upgrade]()
 
@@ -18,6 +18,6 @@
 ### Single Node Upgrade - Xray
 
 * [Xray - Linux Archive Upgrade]()
-* [Xray - RPM Upgrade](./Upgrading%20JFrog%20Platform/Xray%20-%20RPM%20Upgrade/README.md)
+* [Xray - RPM Upgrade](../Upgrading%20JFrog%20Platform/Xray%20-%20RPM%20Upgrade/README.md)
 * [Xray - Docker Compose Upgrade]()
 * [Xray - Helm Upgrade]()
