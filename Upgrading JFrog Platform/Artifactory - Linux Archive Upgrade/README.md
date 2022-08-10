@@ -1,14 +1,14 @@
 # Upgrading JFrog Platform
 ## Artifactory - Linux Archive Upgrade
 
-1. 设置变量
+1. 设置变量(确定安装版本)
     ```
+    export rt_new_version=7.41.7
     export JFROG_HOME=/opt/jfrog
     export JF_NEW_VERSION=/opt/jfrog/artifactory-pro-${rt_new_version}
     ```
-2. 准备升级安装包(确定安装版本)
+2. 准备升级安装包
     ```
-    export rt_new_version=7.41.7
     cd $JFROG_HOME/
     wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/${rt_new_version}/jfrog-artifactory-pro-${rt_new_version}-linux.tar.gz
     ```
@@ -34,10 +34,6 @@
     - 删除解压后的安装包
         ```
         rm -rf $JF_NEW_VERSION
-        ```
-    - 修改app目录权限
-        ```
-        chown -R artifactory:artifactory /opt/jfrog/artifactory/app
         ```
 5. 启动服务
     | Daemon Process |
