@@ -89,6 +89,18 @@ sudo sysctl -p /etc/sysctl.conf
 ### [Docker Compose Installation](./Single%20Node%20Installation/Docker%20Compose%20Installation/README.md)
 ### [Helm Installation](./Single%20Node%20Installation/Helm%20Installation/README.md)
 
+## Single Node Upgrade
+> 升级方式和步骤依赖于安装方式，请选择一样的方式进行安装和升级。
+
+### [Linux Archive Upgrade](./Upgrading%20JFrog%20Platform/README.md)
+* [Artifactory](./Upgrading%20JFrog%20Platform/Artifactory%20-%20Linux%20Archive%20Upgrade/README.md)
+* [Xray](./Upgrading%20JFrog%20Platform/Xray%20-%20Linux%20Archive%20Upgrade/README.md)
+
+### [RPM Upgrade](./Upgrading%20JFrog%20Platform/README.md)
+* [Artifactory](../Upgrading%20JFrog%20Platform/Artifactory%20-%20RPM%20Upgrade/README.md)
+* [Xray](../Upgrading%20JFrog%20Platform/Xray%20-%20RPM%20Upgrade/README.md)
+
+
 ## 补充
 >如果安装过程中遇到问题或启动失败,可以将以下内容发送到我的邮箱-不保证回复(jians0625@gmail.com)
 - console.log
