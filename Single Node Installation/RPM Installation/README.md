@@ -67,8 +67,8 @@
         mkdir -p /var/opt/postgres/data
         rpm -ivh --replacepkgs ./third-party/postgresql/libicu-*.el7_7.x86_64.rpm
         rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-libs-*.rhel7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-13.4-*.rhel7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-server-13.4-*.rhel7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-13.*.rhel7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/postgresql/postgresql13-server-13.*-*.rhel7.x86_64.rpm
         chown -R postgres:postgres /var/opt/postgres
         echo 'export PGDATA="/var/opt/postgres/data"' >> /etc/profile
         echo 'export PGSETUP_INITDB_OPTIONS="-D /var/opt/postgres/data"' >> /etc/profile
@@ -105,8 +105,7 @@
         ```
     4. 安装Rabbitmq依赖(Install RabbitMQ dependencies.)
         ```
-        rpm -ivh --replacepkgs ./third-party/rabbitmq/socat-*.el7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/rabbitmq/erlang-*.el7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/rabbitmq/*.el7.x86_64.rpm
         ```
     5. 安装db-util(You can use the bundled db-utils RPM found under /third-party/misc/.)
         ```
