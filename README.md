@@ -36,6 +36,38 @@
 | Enterprise X | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Xray: Security and Compliance Scanning |
 | Enterprise+ | JFrog Artifactory: Universal Package Manager Repository <br>JFrog Insight: Manage DevOps Insights <br>JFrog Xray: Security and Compliance Scanning <br>JFrog Pipelines: CI/CD pipeline orchestration  <br>JFrog Distribution: Global software distribution |
 
+## Artifactory 网络端口
+8081和8082是外部的访问端口
+其他端口：
+| Microservice | Port |
+| ---- | ---- |
+| Artifactory | 8081 |
+| Access | 8040 and 8045 |
+| Web | 8070 |
+| Replicator | 8048 and 9092 |
+| Metadata | 8086 |
+| Router | 8082, 8046, 8047, 8049, and 8091 |
+| Events | 8061 and 8062 |
+| Integration | 8071 and 8072 |
+| JFConnect | 8030 |
+| Observability | 8036 |
+| gRPC | 8037 |
+
+## Xray 网络端口
+8082是外部的访问端口
+其他端口：
+| Microservice | Port |
+| ---- | ---- |
+| Xray Server | 8000 |
+| Analysis | 7000 |
+| Indexer | 7002 |
+| Persist | 7003 |
+| Router | 8082, 8046, 8047, and 8049 |
+| RabbitMQ | 4369, 5671, 5672, 15672, and 25672 |
+| PostgreSQL (bundled PostgreSQL) | 5432 |
+| Observability | 8036 |
+| gRPC | 8037 |
+
 ## 安装包及认证
 >[安装包](https://jfrog.com/download-legacy/)<br>
 >默认账户和密码(Default credential for Artifactory:)<br>
@@ -47,6 +79,8 @@ Cenotos7.x虚拟机  2台 [(VirtualBox提供)](https://github.com/alexwang66/Gue
 >* 2c4g100G for Artifactory<br>
 >* 4c8g200G for Xray<br>
 >* 8c16g300G for K8s<br>
+
+
 
 >服务器时区和时间配置
 ```shell
