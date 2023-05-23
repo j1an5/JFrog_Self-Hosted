@@ -105,8 +105,7 @@
         ```
     4. 安装Rabbitmq依赖(Install RabbitMQ dependencies.)
         ```
-        rpm -ivh --replacepkgs ./third-party/rabbitmq/socat-*.el7.x86_64.rpm
-        rpm -ivh --replacepkgs ./third-party/rabbitmq/erlang-*.el7.x86_64.rpm
+        rpm -ivh --replacepkgs ./third-party/rabbitmq/*.el7.x86_64.rpm
         ```
     5. 安装db-util(You can use the bundled db-utils RPM found under /third-party/misc/.)
         ```
