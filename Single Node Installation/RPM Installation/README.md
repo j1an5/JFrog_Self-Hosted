@@ -105,6 +105,7 @@
         ```
     4. 安装Rabbitmq依赖(Install RabbitMQ dependencies.)
         ```
+        ls ./third-party/rabbitmq/libltdl7-2.4.6-3.4.1.x86_64.rpm && rpm -ivh ./third-party/rabbitmq/libltdl7-2.4.6-3.4.1.x86_64.rpm
         rpm -ivh --replacepkgs ./third-party/rabbitmq/*.el7.x86_64.rpm
         ```
     5. 安装db-util(You can use the bundled db-utils RPM found under /third-party/misc/.)
