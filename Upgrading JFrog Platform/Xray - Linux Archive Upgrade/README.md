@@ -35,6 +35,11 @@
         ```
         rm -rf $JF_NEW_VERSION
         ```
+    - 升级需要注意依赖包的版本，如果版本不匹配可能会报错；此外，Xray 3.70.0版本及更高版本依赖 RabbitMQ3.11.x及更高版本。且升级到 Rabbit MQ 3.11.x 需要启用功能标志。
+        ```
+        sudo -H -u xray bash -c 'export RABBITMQ_FEATURE_FLAGS="drop_unroutable_metric,empty_basic_get_metric,implicit_default_bindings,maintenance_mode_status,quorum_queue,stream_queue,user_limits,virtual_host_metadata"' 
+        sudo -H -u xray bash -c '/opt/jfrog/xray/app/third-party/rabbitmq/sbin/rabbitmqctl enable_feature_flag all'
+        ``` 
 6. 启动Xray
     | Daemon Process |
     | ---- |
