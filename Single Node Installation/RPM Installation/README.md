@@ -76,7 +76,7 @@
         sed -i "s~^Environment=PGDATA=.*~Environment=PGDATA=/var/opt/postgres/data~" /lib/systemd/system/postgresql-13.service
         systemctl daemon-reload
         /usr/pgsql-13/bin/postgresql-13-setup initdb 
-        systemctl start postgresql-13.service 
+        systemctl start postgresql-13.service && systemctl enable postgresql-13
         ```
     2. PostgreSQL 配置
         ```
