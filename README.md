@@ -74,7 +74,17 @@
 user: admin<br>
 password: password
 ## 演示环境准备
-Cenotos7.x虚拟机  2台 [(VirtualBox提供)](https://github.com/alexwang66/Guestbook-microservices-k8s/blob/master/Virtualbox安装虚拟机配置双网卡.md)
+Cenotos7.x虚拟机  2台 [(VirtualBox提供)](https://github.com/alexwang66/Guestbook-microservices-k8s/blob/master/Virtualbox安装虚拟机配置双网卡.md) - 此虚拟机不支持安装Artifactory7.77.3及以上的版本，说明:
+>Operating Systems - End of Support
+As part of JFrog commitment to maintain the security and reliability of the JFrog Platform, Artifactory will officially run with Node.js 20.x on all installation types from Artifactory 7.77.3.<br>
+>Node.js 20.x provided with Linux Archive/Debian/RPM installations (non-containerized distributions) is not supported on the following operating systems.<br>
+>Ubuntu 18.04 (has reached End of Standard Support on May 31, 2023).<br>
+>RHEL 7.x - Red Hat Enterprise Linux 7.x (has reached End of Full Support on 2019)<br>
+>Centos 7.x (has reached End of Active Support on 2020).<br>
+>Suse Linux Enterprise Server (SLES) 12 SP5 ( will reach End of Standard Support on October 31, 2024)<br>
+>Amazon Linux 2 (no support for Node.js 20x)<br>
+>Hence, these operating systems will no longer supported from Artifactory version 7.77.3.<br>
+
 >虚机的推荐配置如下,所有磁盘空间都分给"/"目录<br>
 >* 2c4g100G for Artifactory<br>
 >* 4c8g200G for Xray<br>
