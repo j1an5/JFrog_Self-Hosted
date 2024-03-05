@@ -76,7 +76,7 @@
         sed -i "s~^Environment=PGDATA=.*~Environment=PGDATA=/var/opt/postgres/data~" /lib/systemd/system/postgresql-13.service
         systemctl daemon-reload
         /usr/pgsql-13/bin/postgresql-13-setup initdb 
-        systemctl start postgresql-13.service 
+        systemctl start postgresql-13.service && systemctl enable postgresql-13
         ```
     2. PostgreSQL 配置
         ```
@@ -105,6 +105,7 @@
         ```
     4. 安装Rabbitmq依赖(Install RabbitMQ dependencies.)
         ```
+        ls ./third-party/rabbitmq/libltdl7-2.4.6-3.4.1.x86_64.rpm && rpm -ivh ./third-party/rabbitmq/libltdl7-2.4.6-3.4.1.x86_64.rpm
         rpm -ivh --replacepkgs ./third-party/rabbitmq/*.el7.x86_64.rpm
         ```
     5. 安装db-util(You can use the bundled db-utils RPM found under /third-party/misc/.)
