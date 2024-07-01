@@ -29,7 +29,7 @@
     ....
       node:
         id: "art1"
-        ip: "192.168.xx.xx”
+        ip: "192.168.xx.xx"
     ....
     ```
 5. 运行Artifactory(Run Artifactory)
