@@ -19,13 +19,18 @@
     sudo yum install jfrog-artifactory-pro
     ```
 2. 修改配置文件(Customize the product configuration (optional) including database, Java Opts, and filestore.)
+Artifactory默认使用derby数据库，在7.84.x以上的版本需要添加 allowNonPostgresql 进行声明(部分版本可能遇到mc引起的启动失败，所以如果不测试MC，可以先关闭)；
     ```
     # vim /opt/jfrog/artifactory/var/etc/system.yaml
     shared:
     ....
       node:
         id: "art1"
-        ip: "192.168.xx.xx”
+        ip: "192.168.xx.xx"
+      database:
+        allowNonPostgresql: true
+    mc:
+      enabled: false
     ....
     ```
 3. 启动Artifactory(Manage Artifactory using the following commands.)

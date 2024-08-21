@@ -22,6 +22,8 @@
     mv artifactory-pro-7.33.9 artifactory
     ```
 4. 修改配置文件-必要(Customize the product configuration (optional) including database, Java Opts, and filestore.)
+Artifactory默认使用derby数据库，在7.84.x以上的版本需要添加 allowNonPostgresql 进行声明(部分版本可能遇到mc引起的启动失败，所以如果不测试MC，可以先关闭)；
+
     ```terminal
     # cp $JFROG_HOME/artifactory/var/etc/{system.full-template.yaml,system.yaml}
     # vim $JFROG_HOME/artifactory/var/etc/system.yaml
@@ -30,6 +32,10 @@
       node:
         id: "art1"
         ip: "192.168.xx.xx"
+      database:
+        allowNonPostgresql: true
+    mc:
+      enabled: false
     ....
     ```
 5. 运行Artifactory(Run Artifactory)
